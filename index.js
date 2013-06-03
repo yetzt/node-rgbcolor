@@ -161,11 +161,7 @@ module.exports = function(color_string) {
         yellow: 'ffff00',
         yellowgreen: '9acd32'
     };
-    for (var key in simple_colors) {
-        if (color_string == key) {
-            color_string = simple_colors[key];
-        }
-    }
+    color_string = simple_colors[key] || color_string;
     // emd of simple type-in colors
 
     // array of color definition objects
@@ -211,7 +207,7 @@ module.exports = function(color_string) {
         var processor = color_defs[i].process;
         var bits = re.exec(color_string);
         if (bits) {
-            channels = processor(bits);
+            var channels = processor(bits);
             this.r = channels[0];
             this.g = channels[1];
             this.b = channels[2];
