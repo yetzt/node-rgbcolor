@@ -1,7 +1,7 @@
 {
 	"name": "rgbcolor",
 	"description": "A module to parse color values",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "Sebastian Vollnhals <sebastian@vollnhals.info>",
 	"main": "./index.js",
 	"repository": {

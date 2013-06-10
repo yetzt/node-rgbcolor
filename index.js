@@ -161,7 +161,7 @@ module.exports = function(color_string) {
         yellow: 'ffff00',
         yellowgreen: '9acd32'
     };
-    color_string = simple_colors[key] || color_string;
+    color_string = simple_colors[color_string] || color_string;
     // emd of simple type-in colors
 
     // array of color definition objects
