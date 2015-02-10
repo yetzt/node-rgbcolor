@@ -5,6 +5,7 @@
 
 module.exports = function(color_string) {
     this.ok = false;
+    this.alpha = 1.0;
 
     // strip any leading #
     if (color_string.charAt(0) == '#') { // remove # if any
@@ -167,6 +168,18 @@ module.exports = function(color_string) {
     // array of color definition objects
     var color_defs = [
         {
+            re: /^rgba\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3}),\s*((?:\d?\.)?\d)\)$/,
+            example: ['rgba(123, 234, 45, 0.8)', 'rgba(255,234,245,1.0)'],
+            process: function (bits){
+                return [
+                    parseInt(bits[1]),
+                    parseInt(bits[2]),
+                    parseInt(bits[3]),
+                    parseFloat(bits[4])
+                ];
+            }
+        },
+        {
             re: /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/,
             example: ['rgb(123, 234, 45)', 'rgb(255,234,245)'],
             process: function (bits){
@@ -211,6 +224,9 @@ module.exports = function(color_string) {
             this.r = channels[0];
             this.g = channels[1];
             this.b = channels[2];
+            if (channels.length > 3) {
+                this.alpha = channels[3];
+            }
             this.ok = true;
         }
 
@@ -220,10 +236,14 @@ module.exports = function(color_string) {
     this.r = (this.r < 0 || isNaN(this.r)) ? 0 : ((this.r > 255) ? 255 : this.r);
     this.g = (this.g < 0 || isNaN(this.g)) ? 0 : ((this.g > 255) ? 255 : this.g);
     this.b = (this.b < 0 || isNaN(this.b)) ? 0 : ((this.b > 255) ? 255 : this.b);
+    this.alpha = (this.alpha < 0) ? 0 : ((this.alpha > 1.0 || isNaN(this.alpha)) ? 1.0 : this.alpha);
 
     // some getters
     this.toRGB = function () {
         return 'rgb(' + this.r + ', ' + this.g + ', ' + this.b + ')';
+    }
+    this.toRGBA = function () {
+        return 'rgba(' + this.r + ', ' + this.g + ', ' + this.b + ', ' + this.alpha + ')';
     }
     this.toHex = function () {
         var r = this.r.toString(16);
