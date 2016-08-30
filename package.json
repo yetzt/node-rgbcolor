@@ -9,6 +9,6 @@
 		"url": "https://github.com/yetzt/node-rgbcolor.git"
 	},
 	"keywords": ["rgb", "color", "rgbcolor"],
-	"license": "Public Domain",
+	"license": "SEE LICENSE IN LICENSE.md",
 	"engines": { "node": ">= 0.8.15" }
 }
