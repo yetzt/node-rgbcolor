@@ -9,6 +9,6 @@
 		"url": "https://github.com/yetzt/node-rgbcolor.git"
 	},
 	"keywords": ["rgb", "color", "rgbcolor"],
-	"license": "SEE LICENSE IN LICENSE.md",
+	"license": "MIT OR SEE LICENSE IN FEEL-FREE.md",
 	"engines": { "node": ">= 0.8.15" }
 }
