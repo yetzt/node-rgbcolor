@@ -192,7 +192,7 @@ module.exports = function(color_string) {
             }
         },
         {
-            re: /^(\w{2})(\w{2})(\w{2})$/,
+            re: /^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/,
             example: ['#00ff00', '336699'],
             process: function (bits){
                 return [
@@ -203,7 +203,7 @@ module.exports = function(color_string) {
             }
         },
         {
-            re: /^(\w{1})(\w{1})(\w{1})$/,
+            re: /^([0-9a-f]{1})([0-9a-f]{1})([0-9a-f]{1})$/,
             example: ['#fb0', 'f0f'],
             process: function (bits){
                 return [
